@@ -1,0 +1,274 @@
+# Task 1
+
+## From monolithic frontend to microfrontend approach
+
+# Structure for each mircofrontend
+
+```
+/auth-microfrontend
+  /src
+    /components
+      Login.js               // Компонент входа пользователя
+      Register.js            // Компонент регистрации пользователя
+      InfoTooltip.js         // Отображение уведомлений при аутентификации (например, сообщения об успешной/неудачной регистрации)
+    /styles
+      login.css              // Стили для компонента входа
+      register.css           // Стили для компонента регистрации
+      /auth-form             // Стили для компонентов формы аутентификации
+        /__button
+          auth-form__button.css
+        /__form
+          auth-form__form.css
+        /__input
+          auth-form__input.css
+        /__link
+          auth-form__link.css
+        /__text
+          auth-form__text.css
+        /__textfield
+          auth-form__textfield.css
+        /__title
+          auth-form__title.css
+        auth_forms.css
+    /utils
+      auth.js                // Утилиты для аутентификации
+    index.js                 // Точка входа микрофронтенда
+  package.json               // Зависимости и скрипты микрофронтенда
+  webpack.config.js          // Конфигурация сборки Webpack
+
+/profile-microfrontend
+  /src
+    /components
+      EditAvatarPopup.js     // Компонент редактирования аватара
+      EditProfilePopup.js    // Компонент редактирования профиля
+    /styles
+      /profile               // Стили для компонентов профиля и редактирования аватара
+        /__add-button
+          profile__add-button.css
+        /__description
+          profile__description.css
+        /__edit-button
+          profile__edit-button.css
+        /__image
+          profile_image.css
+        /__info
+          profile__info.css
+        /__title
+          profile__title.css
+        profile.css
+    /utils
+      api.js                 // Утилиты для работы с профилем
+    index.js                 // Точка входа микрофронтенда
+  package.json               // Зависимости и скрипты микрофронтенда
+  webpack.config.js          // Конфигурация сборки Webpack
+
+/place-managment-microforntend
+  /images                     // Изображения и иконки микрофронтенда
+    add-icon.svg             // Иконка добавления
+    avatar.jpg               // Изображение аватара
+    card_1.jpg               // Изображение карточки (1)
+    card_2.jpg               // Изображение карточки (2)
+    card_3.jpg               // Изображение карточки (3)
+    close.svg                // Иконка закрытия
+    delete-icon.svg          // Иконка удаления
+    edit-icon.svg            // Иконка редактирования
+    error-icon.svg           // Иконка ошибки
+    like-active.svg          // Иконка активного лайка
+    like-inactive.svg        // Иконка неактивного лайка
+    logo.svg                 // Логотип
+    success-icon.svg         // Иконка успеха
+  /src
+    /components
+      AddPlacePopup.js       // Компонент для добавления нового места
+      Card.js                // Компонент карточки места
+      ImagePopup.js          // Компонент всплывающего окна для просмотра изображения
+    /styles
+      /card                  // Стили для карточки места
+        /__delete-button
+          /_hidden
+            card__delete-button_hidden.css  // Стили скрытой кнопки удаления
+          /_visible
+            card__delete-button_visible.css // Стили видимой кнопки удаления
+          card__delete-button.css           // Общие стили кнопки удаления
+        /__description
+          card__description.css             // Стили описания карточки
+        /__image
+          card__image.css                   // Стили изображения карточки
+        /__like-button
+          /_is-active
+            card__like-button_is-active.css // Стили активного лайка
+          card__like-button.css             // Общие стили кнопки лайка
+        /__like-count
+          card__like-count.css              // Стили счетчика лайков
+        /__title
+          card__title.css                   // Стили заголовка карточки
+        card.css                           // Общие стили карточки места
+      /places                // Стили для списка мест
+        /__item
+          places__item.css                  // Стили элемента списка мест
+        /__list
+          places__list.css                  // Стили контейнера списка мест
+        places.css                        // Общие стили списка мест
+    /utils
+      api.js                // Утилиты для работы с API
+  package.json              // Зависимости и скрипты микрофронтенда
+  webpack.config.js         // Конфигурация сборки Webpack
+
+/host
+  /public                    // Публичные файлы проекта
+    favicon.ico              // Фавикон
+    index.html               // HTML-шаблон страницы
+    logo192.png              // Логотип 
+    logo512.png              // Логотип
+    manifest.json            // Манифест приложения
+    robots.txt               // Файл robots.txt
+  /src
+    /components
+      App.js                 // Главный компонент приложения
+      CurrentUserContext.js  // Контекст текущего пользователя
+      Footer.js              // Компонент нижнего колонтитула
+      Header.js              // Компонент заголовка
+      Main.js                // Основной компонент страницы
+      PopupWithForm.js       // Компонент всплывающей формы
+      ProtectedRoute.js      // Компонент защищённого маршрута
+    /styles
+      /content
+        content.css          // Стили для основного контента
+      /footer
+        /__copyright
+          footer__copyright.css  // Стили для копирайта в нижнем колонтитуле
+        footer.css           // Общие стили для нижнего колонтитула
+      /header
+        /__auth-link
+          header__auth-link.css  // Стили для ссылки аутентификации
+        /__logo
+          header__logo.css       // Стили для логотипа в заголовке
+        /__logout
+          header__logout.css     // Стили для кнопки выхода
+        /__user
+          header__user.css       // Стили для отображения информации о пользователе
+        /__wrapper
+          header__wrapper.css    // Стили для обёртки заголовка
+        header.css           // Общие стили для заголовка
+      /page
+        /__content
+          page__content.css    // Стили для контента страницы
+        /__section
+          page__section.css    // Стили для разделов страницы
+        page.css             // Общие стили для страницы
+      /popup
+        /__button
+          /_disabled
+            popup__button_disabled.css  // Стили для неактивной кнопки в попапе
+          popup__button.css    // Общие стили для кнопок попапа
+        /__caption
+          popup__caption.css   // Стили для Caption
+        /__close
+          popup__close.css     // Стили для кнопки закрытия попапа
+        /__content
+          /_content
+            popup__content_content_image.css  // Стили для контента изображения в попапе
+          popup__content.css   // Общие стили для контента попапа
+        /__error
+          /_visible
+            popup__error_visible.css  // Стили для видимой ошибки в попапе
+          popup__error.css     // Общие стили для ошибок попапа
+        /__form
+          popup__form.css      // Стили для формы попапа
+        /__icon
+          popup__icon.css      // Стили для иконки попапа
+        /__image
+          popup__image.css     // Стили для изображения попапа
+        /__input
+          /_type
+            popup__input_type_error.css  // Стили для ошибки ввода в попапе
+          popup__input.css     // Общие стили для ввода в попапе
+        /__label
+          popup__label.css     // Стили для метки попапа
+        /__status-message
+          popup__status-message.css  // Стили для сообщения статуса попапа
+        /__title
+          popup__title.css     // Стили для заголовка попапа
+        _is-opened
+          popup_is-opened.css  // Стили для открытого попапа
+        _type
+          popup_type_edit-avatar.css   // Стили для попапа редактирования аватара
+          popup_type_remove-card.css   // Стили для попапа удаления карточки
+        popup.css            // Общие стили для попапа
+    /utils
+      api.js                 // Утилиты для работы с API
+  /vendor
+    /fonts
+      Inter-Black.woff2      // Шрифт Inter Black
+      Inter-Regular.woff2     // Шрифт Inter Regular
+    fonts.css              // Стили для подключения шрифтов
+    normalize.css          // для сброса стилей браузера
+  index.js                 // Точка входа приложения
+  index.spec.js            // Тесты для точки входа
+  logo.svg                 // Логотип приложения
+  package.json             // Зависимости и скрипты проекта
+  serviceWorker.js         // Скрипт сервис-воркера
+  setupTests.js            // Настройки тестирования
+  webpack.config.js        // Конфигурация сборки Webpack
+
+```
+
+## auth-microfrontend
+
+Микрофронтенд аутентификации отвечает за вход и регистрацию пользователей. Он включает:
+
+- `Login.js` для входа в систему.
+- `Register.js` для создания нового аккаунта.
+- `InfoTooltip.js` для отображения сообщений об успехе или ошибках.
+
+Стили для форм расположены в отдельной директории, а логика работы с API – в файле `auth.js`. Точка входа – `index.js`, а зависимости и сборка управляются через `package.json` и `webpack.config.js`.
+
+## profile-microfrontend
+
+Микрофронтенд профиля отвечает за редактирование информации пользователя. Он включает:
+
+- `EditAvatarPopup.js` для изменения аватара.
+- `EditProfilePopup.js` для обновления данных профиля.
+
+Стили для профиля собраны в отдельной директории, а утилиты для работы с API находятся в файле `api.js`g. Точка входа – `index.js`, а зависимости и сборка управляются через `package.json` и `webpack.config.js`.
+
+
+## place-managment-microforntend
+
+Микрофронтенд управления местами позволяет пользователям добавлять новые места, просматривать карточки с информацией, открывать увеличенные изображения и управлять лайками.
+
+Ключевые компоненты:
+
+- `AddPlacePopup.js` — компонент для добавления нового места.
+- `Card.js` — компонент карточки, где реализовано отображение лайков и их изменение (активное/неактивное состояние, счетчик лайков).
+- `ImagePopup.js` — компонент для просмотра увеличенного изображения.
+
+Стили для карточек и лайков находятся в директории src/styles/, а утилиты для работы с API — в файле api.js в папке src/utils/. Все графические ресурсы расположены в папке images/. Точка входа — index.js, а сборка и зависимости управляются через package.json и webpack.config.js.
+
+## host
+
+Микрофронтенд `host` является основным модулем приложения, объединяющим общие компоненты, стили и публичные ресурсы. Он включает:
+
+Папку `public`, содержащую статические файлы. эти файлы обеспечивают корректное отображение и работу приложения в браузере.
+
+Исходный код в папке `src/components`, где находятся ключевые компоненты:
+App.js – главный компонент приложения,
+`Header.js`, `Footer.js`, `Main.js`,`PopupWithForm.js`, `ProtectedRoute.js` – компоненты, отвечающие за различные части интерфейса,
+а также `CurrentUserContext.js` для управления данными текущего пользователя.
+
+Стили, организованные в директории `src/styles`, разбитые по блокам (например, header, footer, page, popup, content) для обеспечения единообразного оформления.
+
+Утилиты для работы с API в файле `src/utils/api.js`.
+
+Папку vendor с внешними ресурсами, такими как шрифты, файлы стилей для шрифтов (fonts.css) и normalize.css для сброса стандартных стилей браузера.
+
+Главная точка входа – `index.js`, а сборка и управление зависимостями осуществляются через файлы `package.json` и `webpack.config.js`.
+
+
+# Обоснование использования Module Federation
+
+Я выбрал Module Federation для проекта, так как мне нужно использовать общую логику всплывающих окон (Popup) в разных микрофронтендах. Это решение позволяет централизовать общий код и избегать его дублирования.
+
+Module Federation использует механизм shared dependencies. Это означает, что если несколько микрофронтендов требуют одну и ту же библиотеку, загружается только одна версия, что предотвращает конфликты и уменьшает размер бандла.
+
+В моем проекте я храню общий код, например, логику всплывающих окон, в `host`. Это позволяет другим микрофронтендам легко использовать этот код. Централизованное управление общими компонентами позволяет мне легко вносить изменения или исправления, и все микрофронтенды автоматически используют обновлённую версию. 

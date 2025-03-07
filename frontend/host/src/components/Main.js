@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import { CurrentUserContext } from '../../../auth-microfrontend/src/components/CurrentUserContext';
+import { CurrentUserContext } from './CurrentUserContext';
 
 function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
