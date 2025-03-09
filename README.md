@@ -1,5 +1,7 @@
 # Task 1
 
+**Note**: Без задач кодирования!!
+
 ## From monolithic frontend to microfrontend approach
 
 ### Structure for each mircofrontend
